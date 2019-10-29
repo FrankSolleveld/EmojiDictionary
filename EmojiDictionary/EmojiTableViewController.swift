@@ -17,7 +17,7 @@ class EmojiTableViewController: UITableViewController {
         Emoji(symbol: "😬", name: "Cringy guy", description: "This face is cringing hard.", usage: "When you notice soemthing is really cringe you just wanna fade out."),
         Emoji(symbol: "🤯", name: "Exploded", description: "This person is really surprised and therebor his head is blown up.", usage: "When something so unexpectedly happend your head explodes."),
         Emoji(symbol: "👺", name: "Satan", description: "Meet Satan", usage: "When you want to show that you are a Satan worshipper."),
-    ]
+    ]   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,24 +34,25 @@ class EmojiTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0 {
+            return emojis.count
+        } else {
+            return 0
+        }
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell", for: indexPath)
+        let emoji = emojis[indexPath.row]
+        cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name)"
+        cell.detailTextLabel?.text = emoji.description
+        return cell
+    }
     
     /*
      // Override to support conditional editing of the table view.
