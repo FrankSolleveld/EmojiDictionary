@@ -194,7 +194,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="EmojiDictionary" id="Rzd-CP-f3l">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="SJg-AD-iUY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SJg-AD-iUY">
                             <connections>
                                 <segue destination="tse-1Y-wcB" kind="presentation" id="MOh-rY-RpB"/>
                             </connections>
