@@ -11,7 +11,7 @@ import UIKit
 class EmojiTableViewController: UITableViewController {
     
     var emojis: [Emoji] = [
-        Emoji(symbol: "🍏", name: "apple", description: "This is a shiny green apple.", usage: "When you are super happy to share a fruit with someone, this is the best choice."),
+        Emoji(symbol: "🍏", name: "Apple", description: "This is a shiny green apple.", usage: "When you are super happy to share a fruit with someone, this is the best choice."),
         Emoji(symbol: "🍟", name: "French fries", description: "Freshly baked French fries.", usage: "When you don't feel like eating healthy, this is the best choice."),
         Emoji(symbol: "😡", name: "Mad af", description: "This guy is mad because his code won't compile.", usage: "When you have spend several hours trying to fix a specifix bug and it still does not resolve the issue."),
         Emoji(symbol: "😬", name: "Cringy guy", description: "This face is cringing hard.", usage: "When you notice soemthing is really cringe you just wanna fade out."),
@@ -64,13 +64,18 @@ class EmojiTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            emojis.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     @IBAction func editButtontapped(_ sender: UIBarButtonItem) {
         let tableViewEditingMode = tableView.isEditing
         tableView.setEditing(!tableViewEditingMode, animated: true)
     }
-    
-    
 }
