@@ -9,9 +9,9 @@
         <!--Add/Edit Emoji-->
         <scene sceneID="aIO-oo-fQk">
             <objects>
-                <tableViewController id="yrn-hO-kkF" sceneMemberID="viewController">
+                <tableViewController id="yrn-hO-kkF" customClass="AddEditEmojiTableViewController" customModule="EmojiDictionary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="gN0-Aa-kBF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -106,9 +106,27 @@
                             <outlet property="delegate" destination="yrn-hO-kkF" id="qJc-GK-ZfB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add/Edit Emoji" id="Rxu-KH-5AE"/>
+                    <navigationItem key="navigationItem" title="Add/Edit Emoji" id="Rxu-KH-5AE">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8tF-qR-HhP">
+                            <connections>
+                                <segue destination="z50-Xe-pkY" kind="unwind" identifier="saveUnwind" unwindAction="unwindToEmojiTableView:" id="alE-DX-KhI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zF2-0m-IAj">
+                            <connections>
+                                <segue destination="z50-Xe-pkY" kind="unwind" unwindAction="unwindToEmojiTableView:" id="CvJ-rn-n6v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="vHX-UX-4J1" id="tSS-46-VJT"/>
+                        <outlet property="nameTextField" destination="F8c-3s-k8A" id="SNs-7r-lC1"/>
+                        <outlet property="symbolTextField" destination="stp-dB-M7k" id="QFt-jl-KmM"/>
+                        <outlet property="usageTextField" destination="LRM-PO-cH4" id="4gq-uC-9cR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maQ-0V-you" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="z50-Xe-pkY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2271" y="-2"/>
         </scene>
@@ -116,8 +134,9 @@
         <scene sceneID="gSt-Ay-38S">
             <objects>
                 <navigationController id="tse-1Y-wcB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OBe-7t-9dr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9B9-Ce-Bn8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -184,7 +203,7 @@
                                     <outlet property="descriptionLabel" destination="x4s-oC-Z1x" id="d88-N2-zXa"/>
                                     <outlet property="nameLabel" destination="x9Y-Dr-Y1c" id="GPf-iD-c0B"/>
                                     <outlet property="symbolLabel" destination="N7W-8G-d0W" id="a7H-Ot-Z4Y"/>
-                                    <segue destination="tse-1Y-wcB" kind="presentation" identifier="EditEmoji" id="Icp-Fc-hUm"/>
+                                    <segue destination="tse-1Y-wcB" kind="show" identifier="EditEmoji" id="Icp-Fc-hUm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -196,7 +215,7 @@
                     <navigationItem key="navigationItem" title="EmojiDictionary" id="Rzd-CP-f3l">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="SJg-AD-iUY">
                             <connections>
-                                <segue destination="tse-1Y-wcB" kind="presentation" id="MOh-rY-RpB"/>
+                                <segue destination="tse-1Y-wcB" kind="show" id="MOh-rY-RpB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -223,6 +242,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Icp-Fc-hUm"/>
+        <segue reference="MOh-rY-RpB"/>
     </inferredMetricsTieBreakers>
 </document>
